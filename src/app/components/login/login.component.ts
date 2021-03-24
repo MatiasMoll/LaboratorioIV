@@ -1,4 +1,10 @@
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
+
 import { Component, OnInit } from '@angular/core';
+
+
 
 @Component({
   selector: 'app-login',
@@ -7,9 +13,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  	public usrName:string;
+	public usrPass:string;
 
-  ngOnInit(): void {
-  }
+	constructor(
+		public fireAuth:AngularFireAuth,
+		public router:Router
+	) {
+			
+	}
 
+	ngOnInit() {
+	}
+
+	login(){
+		this.fireAuth.signInWithEmailAndPassword(this.usrName,this.usrPass)
+		.then(()=>{
+			this.router.navigate(['bienvenido']);
+		})
+		.catch((res)=>{
+			alert(res);
+			this.router.navigate(['error']);
+		});
+		this.clearInputs();
+	}        
+	clearInputs(){
+		this.usrName = "";
+		this.usrPass = "";
+	}
+	volverHome(){
+		this.router.navigate(['/']);
+	}
+	fillInputs(){
+		this.usrName = "test@gmail.com";
+		this.usrPass = "isanoe20";
+	}
 }
