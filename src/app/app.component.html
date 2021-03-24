@@ -1,0 +1,16 @@
+<label>Ingrese la primer edad: </label>
+<input type="number" placeholder="Ingrese una edad" [(ngModel)]="numero1" />
+<br/>
+<label>Ingrese la segunda edad: </label>
+<input type="number" placeholder="Ingrese una edad" [(ngModel)]="numero2" />
+<br/>
+
+<button (click)="calcular()">Calcular</button>
+<button (click)="limpiar()">Limpiar</button>
+<br/>
+
+<p>Suma de las edades: {{resSuma}}</p>
+<br/>
+<p>Promedio de las edades: {{resProm}}</p>
+
+<router-outlet></router-outlet>
