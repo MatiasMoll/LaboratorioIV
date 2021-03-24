@@ -1,8 +1,9 @@
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-
+import * as firebase from 'firebase';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 
@@ -18,12 +19,17 @@ export class LoginComponent implements OnInit {
 
 	constructor(
 		public fireAuth:AngularFireAuth,
-		public router:Router
+		public router:Router,
+		public authService: AuthService
 	) {
 			
 	}
 
 	ngOnInit() {
+	}
+
+	loginWithGoogle(){
+		this.authService.GoogleAuth();
 	}
 
 	login(){
