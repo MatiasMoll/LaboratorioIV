@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-//import { auth } from 'firebase/app';
+
 import { AngularFireAuth } from "@angular/fire/auth";
 import { Router } from '@angular/router';
+import * as firebase from 'firebase';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +17,9 @@ export class AuthService {
   ) { }
 
   // Sign in with Google
-  /*GoogleAuth() {
-    return this.AuthLogin(new auth.GoogleAuthProvider());
-  }*/ 
+  GoogleAuth() {
+    return this.AuthLogin(new firebase.default.auth.GoogleAuthProvider());
+  }
 
   // Auth logic to run auth providers
   AuthLogin(provider) {
